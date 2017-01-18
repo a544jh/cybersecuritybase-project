@@ -21,7 +21,7 @@ public class TodoItem extends AbstractPersistable<Long> {
         this.account = account;
         this.task = name;
     }
-
+    
     public Account getAccount() {
         return account;
     }

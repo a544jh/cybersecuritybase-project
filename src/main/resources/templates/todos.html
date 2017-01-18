@@ -8,7 +8,7 @@
         <h1>Todos</h1>
 
         <ul>
-            <li th:each="todo : ${todos}" ><span th:utext="${todo.task}"></span></li>
+            <li th:each="todo : ${todos}" ><span th:utext="${todo.task}"></span> <a th:href="@{todos/{id}/delete(id=${todo.id})}">Delete</a></li>
         </ul>
         
         <form action="#" th:action="@{/todos}" method="POST">

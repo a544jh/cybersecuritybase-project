@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +38,12 @@ public class TodoController {
     public String submitForm(Authentication auth, @RequestParam String todo) {
         Account acc = accountRepository.findByUsername(auth.getName());
         todoRepository.save(new TodoItem(acc, todo));
+        return "redirect:/todos";
+    }
+
+    @RequestMapping(value = "/todos/{id}/delete", method = RequestMethod.GET)
+    public String deleteTodo(@PathVariable Long id) {
+        todoRepository.delete(id);
         return "redirect:/todos";
     }
 

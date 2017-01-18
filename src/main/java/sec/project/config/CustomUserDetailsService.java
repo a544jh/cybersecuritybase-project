@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         // this data would typically be retrieved from a database
         Account account = new Account();
         account.setUsername("ted");
-        account.setPassword("$2a$06$rtacOjuBuSlhnqMO2GKxW.Bs8J6KI0kYjw/gtF0bfErYgFyNTZRDm");
+        account.setPassword("ted");
         accountRepository.save(account);
     }
 
