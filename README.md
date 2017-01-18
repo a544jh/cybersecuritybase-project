@@ -1,5 +1,5 @@
 # Cyber Security Base - Course Project I
-Java Spring application with added vulnerabilities.
+Java Spring todo list application with added vulnerabilities.
 
 ## How to run
 Open project in NetBeans and run it from there.
