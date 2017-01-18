@@ -1,5 +1,10 @@
-##### Cyber Security Base - Course Project I
-Java Spring application with added vulnerabilities
+# Cyber Security Base - Course Project I
+Java Spring application with added vulnerabilities.
+
+## How to run
+Open project in NetBeans and run it from there.
+
+## The vulnerabilities
 
 ### A3 - Cross-Site Scripting (XSS): JavaScript that can access session cookie can be injected
 Add a new todo with content `<script>alert(document.cookie)</script>`
@@ -30,12 +35,12 @@ For example one can add a todo with the text (or even in eg. an e-mail): `<img s
 to make the browser send a delete request when the page is viewed.
 
 #### To fix:
-Change the request method of deleteTodo() to POST in TodoController.java`
+Change the request method of deleteTodo() to POST in `TodoController.java`
 Make corresponding form in `todos.html`
 Change `th:utext` to `th:text` in `todos.html`
 Remove `http.csrf.disable()` in `SecurityConfiguration.java`
 
-#### A6 - Sensitive Data Exposure: Passwords stored in plaintext
+### A6 - Sensitive Data Exposure: Passwords stored in plaintext
 If the database would be compromised, the passwords would be readily available.
 
 #### To fix:
