@@ -1,6 +1,9 @@
 package sec.project.config;
 
 import org.apache.catalina.Context;
+import org.apache.catalina.Manager;
+import org.apache.catalina.SessionIdGenerator;
+import org.apache.catalina.util.SessionIdGeneratorBase;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
@@ -24,6 +27,15 @@ public class MyEmbeddedServletContainerCustomizer implements EmbeddedServletCont
             @Override
             public void customize(Context context) {
                 context.setUseHttpOnly(false);
+                context.getManager().setSessionIdGenerator(new SessionIdGeneratorBase() {
+                    
+                    private int id = 0;
+                    
+                    @Override
+                    public String generateSessionId(String string) {
+                        return String.valueOf(id++);
+                    }
+                });
             }
         });
     }
