@@ -13,8 +13,8 @@ Open project in NetBeans and run it from there.
 This could be replaced with malicious code.
 
 #### To fix:
-Change `th:utext` to `th:text` in `todos.html`
-Remove `context.setUseHttpOnly(false)` from `MyEmbeddedServletContainerCustomizer.java`
+* Change `th:utext` to `th:text` in `todos.html`
+* Remove `context.setUseHttpOnly(false)` from `MyEmbeddedServletContainerCustomizer.java`
 
 ### A2 - Broken Authentication and Session Management: Trivial to guess session tokens.
 You can hijack someone's session just by guessing a session id, 
@@ -27,7 +27,7 @@ since the embedded server's session id generator has been replaced by a very wea
 4. Use the javascript console to set the cookie: `document.cookie = "JSESSIONID=2"` and refresh the page to hijack the other session.
 
 #### To fix:
-Remove the custom session id generator from `MyEmbeddedServletContainerCustomizer.java`
+* Remove the custom session id generator from `MyEmbeddedServletContainerCustomizer.java`
 
 ### A7 - Missing Function Level Access Control: No ACL check for todo deletion
 Anyone can delete anyone's todo by just sending a GET to `todos/{id}/delete`
@@ -54,15 +54,15 @@ to make the browser send a delete request when the page is viewed.
 5. The first one should be deleted
 
 #### To fix:
-Change the request method of deleteTodo() to POST in `TodoController.java`
-Make corresponding form in `todos.html`
-Change `th:utext` to `th:text` in `todos.html`
-Remove `http.csrf.disable()` in `SecurityConfiguration.java`
+* Change the request method of deleteTodo() to POST in `TodoController.java`
+* Make corresponding form in `todos.html`
+* Change `th:utext` to `th:text` in `todos.html`
+* Remove `http.csrf.disable()` in `SecurityConfiguration.java`
 
 ### A6 - Sensitive Data Exposure: Passwords stored in plaintext
 If the database would be compromised, the passwords would be readily available.
 The test user's password was previously hashed in the source code, but now it's in plaintext.
 
 #### To fix:
-Change `new PlaintextPasswordEncoder()` to `new BCryptPasswordEncoder()` in `SecurityConfiguration.java`
+* Change `new PlaintextPasswordEncoder()` to `new BCryptPasswordEncoder()` in `SecurityConfiguration.java`
 (the imports need to be changed as well).
